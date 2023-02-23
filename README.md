@@ -72,4 +72,5 @@ you may receive point deductions.
 - Oooooh checking for linear independence? That's a cool idea, I did that in a class. That could be cool. Hm.
 
 Some ideas for random testing suites from [
-this](https://medium.com/unitychain/provable-randomness-how-to-test-rngs-55ac6726c5a3) source.
+this](https://medium.com/unitychain/provable-randomness-how-to-test-rngs-55ac6726c5a3) source. The
+relative-frequency-per-index one though was our own, so... we're proud of it.
