@@ -45,11 +45,12 @@ randomization algorithms.
 ## Grading
 
 The project is out of 50 points.
-5 pts Declare and define one template class in a header file as described above.
-15 pts (Individual pts) Write a custom randomization algorithm that is effective according to the
-metric.
-20 pts The concept and execution of the metric as the main program are correct.
-10 pts The README file contains a professional report of the results as described above.
+
+- 5 pts Declare and define one template class in a header file as described above.
+- 15 pts (Individual pts) Write a custom randomization algorithm that is effective according to the
+  metric.
+- 20 pts The concept and execution of the metric as the main program are correct.
+- 10 pts The README file contains a professional report of the results as described above.
 
 It is expected that your program will compile, run, and have good style. If your project does not,
 you may receive point deductions.
