@@ -1,13 +1,14 @@
-//
-// Created by seans on 2/22/2023.
-//
-
-#include <vector>
-
-using namespace std;
+// Created by sstclair and lpiloco 2/22/2023
 
 #ifndef M2AP_SHUFFLEVECTOR_H
 #define M2AP_SHUFFLEVECTOR_H
+
+#include <vector>
+#include <optional>
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
 
 template<typename T>
 class ShuffleVector {
@@ -57,15 +58,38 @@ public:
         vec = {};
     }
 
-    explicit ShuffleVector(vector<T> v) {
-        vec = v;
+    ShuffleVector(vector<T> vec) {
+        this->vec = vec;
     }
 
-    ShuffleVector<T> sortVec() {
-        ShuffleVector<T> v = ShuffleVector(sortVecRec(vec));
-        return v;
+    // Getters
+
+    // Setters
+
+    void randomizeSstclair() {
+
     }
 
+    void randomizeLpiloco() {
+
+    }
+
+    void sortVector() {
+        sortVecRec(vec);
+    }
+
+    optional<T> findItem(T item) {
+        return nullopt;
+    }
+
+    optional<T> findItemByIndex(int index) {
+        return nullopt;
+    }
+
+    friend ostream &operator<<(ostream &outs, const ShuffleVector &vec) {
+        outs << "Test hi" << endl;
+        return outs;
+    }
 
 };
 
