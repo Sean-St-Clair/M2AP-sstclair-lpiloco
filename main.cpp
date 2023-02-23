@@ -1,7 +1,11 @@
 #include <iostream>
+#include <vector>
+#include "ShuffleVector.h"
+
 using namespace std;
 
 int main() {
-    cout << "M2AP lessgoooo" << endl;
+    ShuffleVector<int> vec({1, 2, 3, 4, 7});
+    ShuffleVector<int> v = vec.sortVec();
     return 0;
 }
