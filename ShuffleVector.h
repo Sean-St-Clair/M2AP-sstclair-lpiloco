@@ -86,8 +86,10 @@ public:
         return nullopt;
     }
 
-    friend ostream &operator<<(ostream &outs, const ShuffleVector &vec) {
-        outs << "Test hi" << endl;
+    friend ostream &operator<<(ostream &outs, const ShuffleVector &v) {
+        for (int i = 0; i < size(vec); ++i) {
+            outs << vec[i] << ", " << endl;
+        }
         return outs;
     }
 
