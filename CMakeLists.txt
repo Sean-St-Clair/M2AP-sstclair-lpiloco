@@ -3,4 +3,4 @@ project(M2AP)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(main main.cpp)
+add_executable(main main.cpp ShuffleVector.h)
