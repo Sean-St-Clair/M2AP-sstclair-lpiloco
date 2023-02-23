@@ -6,16 +6,17 @@ using namespace std;
 
 int main() {
     // Create shuffle vectors
-    vector<int> v1 = {1, 2, 3, 4, 7};
-    ShuffleVector<int> shuffleVec(v1);
+    vector<char> v1 = {'b', 'y', 'e', 'c', 'a'};
+    ShuffleVector<char> shuffleVec(v1);
     shuffleVec.sortVector();
+    cout << shuffleVec << endl;
 
     // Test randomness
-    shuffleVec.randomizeSstclair();
+    /*shuffleVec.randomizeSstclair();
     testRelativeFrequency(shuffleVec);
     testRelativeFrequencePerIndex(shuffleVec);
     testConsecutiveIdenticalItems(shuffleVec);
-    testMaxConsecutiveIndenticalItems(shuffleVec);
+    testMaxConsecutiveIndenticalItems(shuffleVec);*/
 
     shuffleVec.randomizeLpiloco();
     return 0;

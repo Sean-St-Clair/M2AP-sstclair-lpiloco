@@ -15,7 +15,7 @@ class ShuffleVector {
 private:
     vector<T> vec;
 
-    vector<T> sortVecRec(vector<T> vec) {
+    vector<T> sortVecRec(vector<T> &vec) {
         if (vec.size() <= 1) {
             return vec;
         }
@@ -63,7 +63,7 @@ public:
     }
 
     // Getters
-    vector<T> getVector() {
+    vector<T> getVector() const{
         return vec;
     }
 
@@ -81,7 +81,7 @@ public:
     }
 
     void sortVector() {
-        sortVecRec(vec);
+        vec = sortVecRec(vec);
     }
 
     optional<T> findItem(T item) {
@@ -93,8 +93,8 @@ public:
     }
 
     friend ostream &operator<<(ostream &outs, const ShuffleVector &v) {
-        for (int i = 0; i < size(vec); ++i) {
-            outs << vec[i] << ", " << endl;
+        for (int i = 0; i < size(v.getVector()); ++i) {
+            outs << v.getVector()[i] << " ";
         }
         return outs;
     }
