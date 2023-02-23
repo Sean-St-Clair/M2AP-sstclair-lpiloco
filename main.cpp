@@ -26,9 +26,9 @@ void testConsecutiveIdenticalItems(ShuffleVector<T> &vec);
 int main() {
     // Create shuffle vectors
     vector<char> v1 = {'b', 'y', 'e', 'c', 'a'};
-    ShuffleVector<char> shuffleVec(v1);
-    shuffleVec.sortVector();
-    cout << shuffleVec << endl;
+    ShuffleVector<char> svec(v1);
+    svec.sortVector();
+    cout << svec << endl;
 
     // Test randomness for first algorithm
     svec.randomizeSstclair();
