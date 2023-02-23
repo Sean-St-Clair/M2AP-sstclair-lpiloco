@@ -1,6 +1,4 @@
-//
-// Created by seans on 2/22/2023.
-//
+// Created by sstclair and lpiloco 2/22/2023
 
 #ifndef M2AP_SHUFFLEVECTOR_H
 #define M2AP_SHUFFLEVECTOR_H
@@ -17,36 +15,6 @@ class ShuffleVector {
 private:
     vector<T> vec;
 
-public:
-    ShuffleVector() {
-        vec = {};
-    }
-
-    ShuffleVector(vector<T> vec) {
-        this->vec = vec;
-    }
-
-    void randomizeSstclair() {
-
-    }
-
-    void randomizeLpiloco() {
-
-    }
-
-    void sortVector() {
-
-    }
-
-    optional<T> findItem(T item) {
-
-    }
-
-    optional<T> findItem(int index) {
-
-    }
-
-    vector<T> sortVec() {
     vector<T> sortVecRec(vector<T> vec) {
         if (vec.size() <= 1) {
             return vec;
@@ -85,26 +53,43 @@ public:
         return vec;
     }
 
-    friend ostream &operator<<(ostream &outs, const ShuffleVector &vec) {
-        outs << "Test hi" << endl;
-        return outs;
-    }
-
-
 public:
     ShuffleVector() {
         vec = {};
     }
 
-    explicit ShuffleVector(vector<T> v) {
-        vec = v;
+    ShuffleVector(vector<T> vec) {
+        this->vec = vec;
     }
 
-    ShuffleVector<T> sortVec() {
-        ShuffleVector<T> v = ShuffleVector(sortVecRec(vec));
-        return v;
+    // Getters
+
+    // Setters
+
+    void randomizeSstclair() {
+
     }
 
+    void randomizeLpiloco() {
+
+    }
+
+    void sortVector() {
+        sortVecRec(vec);
+    }
+
+    optional<T> findItem(T item) {
+        return nullopt;
+    }
+
+    optional<T> findItemByIndex(int index) {
+        return nullopt;
+    }
+
+    friend ostream &operator<<(ostream &outs, const ShuffleVector &vec) {
+        outs << "Test hi" << endl;
+        return outs;
+    }
 
 };
 
