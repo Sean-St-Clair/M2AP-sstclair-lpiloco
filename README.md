@@ -1,63 +1,55 @@
-# Custom Quiz
+# CS 120 Module 2 Applied Project: Randomization
 
-Create your own quiz to test your knowledge!
+For this project, you will design and implement a C++ program that creates and evaluates
+randomization algorithms.
 
-For this project, you will use C++ classes with Has-A (component) relationships.
+## Requirements
 
-Note that the starter code for this project does not compile. You will need to start completing TODOs before the program will run.
+- You must work in a team of 2-4 people of your choosing for this project.
+- All of your programming files should be in a private GitHub repository in the course
+  organization.
+    - Your repository must be named with the convention: M2AP-netid1-netid2[-netid3-
+      netid4], where netidX is your UVM NetID username.
+    - Have one team member create the repository and add the other members as collaborators
+      (on GitHub, go to Settings —> Manage Access and add the others’ GitHub usernames).
+- Your repository should have a .gitignore file, a README file, and a CMakeLists.txt.
 
-You may work individually or with a partner of your choosing.
+- In a header file, write a template class that holds a vector of the template type. Write all of the
+  code for this class in the header file. Do not create a corresponding .cpp file. The class must
+  have methods to do the following:
+    - Randomize the vector.
+        - Each team member must write their own randomize method and they must be significantly
+          different from each other. They must all be included in the class and the method names
+          should include the author’s netid or initials.
+            - Your can get individual bonus points if you choose not to use the built-in
+              (pseudo-)random number generators and your randomize algorithm is still effective.
+            - You can lose individual points if your randomize method uses the built-in shuffle
+              function.
+    - Sort the vector.
+        - You are allowed to reuse code from Data Structures & Algorithms, or use the built-in C++
+          sort function, for this method.
+    - Find an item in the vector.
+    - Overload the << operator to print the vector of items.
+    - You can add other functionality as needed.
 
-## Setup
-Use this Guided Project template to create a new repository (see [GitHub-with-CLion](https://github.com/uvmcs120s2023/GitHub-with-CLion) repo for directions).
-**Your repository must be named with the convention: Custom-Quiz-netid**, where netid is your UVM NetID username.
-* If you are collaborating, the format is Custom-Quiz-netid1-netid2. Have one partner create the repository and give the other partner access on GitHub: on the repository page, go to the Settings tab, choose Manage Access, and add the person with their GitHub username.
-
-Remember to commit and push frequently.
-
-## Has-A Relationship
-Two classes in C++ have a Has-A relationship when at least one object of one class is a field of the other class.
-The class whose object is a field is called a *component* class.
-
-For this project, you will complete the Quiz program which stores `Question` objects as components inside a `Quiz` class.
-* Note that this project has vectors of components, but it is possible to have a component be a single object.
-
-### Question Class
-Look through the `Question` header and .cpp files. Notice that a `Question` has a vector of `answer`s (where `answer` is a struct).
-
-### Quiz Class
-Look through the `Quiz` header and .cpp files. Complete the TODO comments in the header file and finish implementing the .cpp file.
-* Your constructor should use an initializer list like the `Question` default constructor does.
-* The `removeQuestion` methods should have similar functionality as the `Question` class `removeAnswer` methods.
-* Note that the methods should be defined in the same order in the .cpp file as they are declared in the header file.
-* Note that the two longer methods have been partially implemented for you.
-
-### Main program
-The main program declares a `Quiz` object and makes a single call to `takeQuiz`.
-
-**Create your own quiz data file** and modify the `takeQuiz` method call so that the program runs your own custom quiz.
-* Your quiz should have at least five questions.
-* Your quiz questions should have at least two different numbers of answers and at least two different point values.
-
-### Testing program
-Create a `testing.cpp` file and put a `main` function in it that creates `Question` and `Quiz` objects and calls their methods (especially the methods not used in `takeQuiz`) to ensure that all the functionality works correctly.
-* Once you create `testing.cpp`, uncomment the line in `CMakeLists.txt` that will create an executable for the testing program. You will be able to choose between the main program and the testing program through the dropdown menu between the Build and Run buttons in CLion.
-
-## Questions
-Answer the following prompts here in your `README.md` file:
-* Give three examples of classes that would make sense to implement with the Has-A relationship (e.g. Car has an Engine):
-  1.  
-  2. 
-  3. 
-* Describe in your own words the benefit(s) of the component relationship.
-
+- The goal of your main program is to determine which of the randomize algorithms work
+  well. This means you need to agree as a team on some quantitative metric to determine the
+  effectiveness of a randomizing algorithm, test each randomize method according to your
+  metric, and report in your README about your results.
+    - Your team can get bonus points if your metric is especially creative and impressive.
+- Your testing and explanation in your main program and README.md file should be thorough
+  and correctly determine if an algorithm randomizes well.
+- All of the above must be pushed to your GitHub repository.
+- Every teammate must submit the URL of the GitHub repository.
 
 ## Grading
 
-If you are collaborating, both partners have to submit on Gradescope.
+The project is out of 50 points.
+5 pts Declare and define one template class in a header file as described above.
+15 pts (Individual pts) Write a custom randomization algorithm that is effective according to the
+metric.
+20 pts The concept and execution of the metric as the main program are correct.
+10 pts The README file contains a professional report of the results as described above.
 
-### Grading Rubric
-- [ ] (8 pts) Complete `Quiz` class
-- [ ] (4 pts) Create custom Quiz and use it in the main program
-- [ ] (5 pts) Testing program
-- [ ] (3 pts) Answer questions in `README.md`
+It is expected that your program will compile, run, and have good style. If your project does not,
+you may receive point deductions.
