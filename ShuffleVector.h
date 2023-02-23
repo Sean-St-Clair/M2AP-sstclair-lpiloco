@@ -14,18 +14,9 @@ class ShuffleVector {
 private:
     vector<T> vec;
 
-public:
-    ShuffleVector() {
-        vec = {};
-    }
-
-    ShuffleVector(vector<T> v) {
-        vec = v;
-    }
-
-    vector<T> sortVec() {
+    vector<T> sortVecRec(vector<T> vec) {
         if (vec.size() <= 1) {
-            return;
+            return vec;
         }
 
         // Choose a partition element
@@ -45,8 +36,8 @@ public:
         }
 
         // Recursive calls
-        quickSortStableRec(smaller);
-        quickSortStableRec(larger);
+        sortVecRec(smaller);
+        sortVecRec(larger);
 
         // Copy elements from smaller, equal, and larger back into vec
         for (i = 0; i < vec.size(); ++i) {
@@ -60,6 +51,22 @@ public:
         }
         return vec;
     }
+
+public:
+    ShuffleVector() {
+        vec = {};
+    }
+
+    explicit ShuffleVector(vector<T> v) {
+        vec = v;
+    }
+
+    ShuffleVector<T> sortVec() {
+        ShuffleVector<T> v = ShuffleVector(sortVecRec(vec));
+        return v;
+    }
+
+
 };
 
 #endif //M2AP_SHUFFLEVECTOR_H
