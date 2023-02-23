@@ -59,16 +59,17 @@ you may receive point deductions.
 
 - Relative frequency test overall (all outcomes should occur roughly as many times as each other, given enough trials)
 - Relative frequency PER each index of the vector, to see if any one index in particular is inappropriately skewed (
-  would theoretically require many more trials to be as accurate as the previous test)
+  would theoretically require many more trials to be as accurate as the previous test) but would indicate if the
+  distribution of values was particularly out-of-whack.
 - Some sort of visual test(?) if we could manage some sort of visual (even printed to console), a particularly egregious
   error in our randomization algorithm may be apparent (though we would be cautious not to declare something as a
   pattern with certainty)
 - Testing for lots of 0s or 1s in a row on a shuffled vector of equally-many 0s and 1s (like, a sequence of 10
   consecutive 1s or 0s is to be expected, but at a very specific frequency, so we could test consecutive sequences of
-  length 1-50 or something, just to see if the frequency is at all out-of-whack)
-
-- This might all require an IMMENSE amount of memory. lol. We'll see. And will hopefully clean as we go.
+  length 1-50 or something, just to see if the frequency of any sequence is at all out-of-whack)
+- This might all require an IMMENSE amount of memory. lol. We'll see. And will hopefully "clean" as we go (like
+  re-initializing a vector rather than storing a new one).
 - Oooooh checking for linear independence? That's a cool idea, I did that in a class. That could be cool. Hm.
 
-Some ideas for random testing suites from (
-this source.)[https://medium.com/unitychain/provable-randomness-how-to-test-rngs-55ac6726c5a3]
+Some ideas for random testing suites from [
+this](https://medium.com/unitychain/provable-randomness-how-to-test-rngs-55ac6726c5a3) source.
