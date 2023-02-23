@@ -1,9 +1,7 @@
-#include "Quiz.h"
 #include <iostream>
 using namespace std;
 
 int main() {
-    Quiz q;
-    q.takeQuiz("QuizData.txt", cout, cin);
+    cout << "M2AP lessgoooo" << endl;
     return 0;
 }
