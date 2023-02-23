@@ -2,12 +2,15 @@
 // Created by seans on 2/22/2023.
 //
 
-#include <vector>
-
-using namespace std;
-
 #ifndef M2AP_SHUFFLEVECTOR_H
 #define M2AP_SHUFFLEVECTOR_H
+
+#include <vector>
+#include <optional>
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
 
 template<typename T>
 class ShuffleVector {
@@ -19,8 +22,28 @@ public:
         vec = {};
     }
 
-    ShuffleVector(vector<T> v) {
-        vec = v;
+    ShuffleVector(vector<T> vec) {
+        this->vec = vec;
+    }
+
+    void randomizeSstclair() {
+
+    }
+
+    void randomizeLpiloco() {
+
+    }
+
+    void sortVector() {
+
+    }
+
+    optional<T> findItem(T item) {
+
+    }
+
+    optional<T> findItem(int index) {
+
     }
 
     vector<T> sortVec() {
@@ -60,6 +83,12 @@ public:
         }
         return vec;
     }
+
+    friend ostream &operator<<(ostream &outs, const ShuffleVector &vec) {
+        outs << "Test hi" << endl;
+        return outs;
+    }
+
 };
 
 #endif //M2AP_SHUFFLEVECTOR_H
