@@ -63,11 +63,17 @@ public:
     }
 
     // Getters
+    vector<T> getVector() {
+        return vec;
+    }
 
     // Setters
+    void setVector(vector<T> vec) {
+        this->vec = vec;
+    }
 
     void randomizeSstclair() {
-
+        
     }
 
     void randomizeLpiloco() {
