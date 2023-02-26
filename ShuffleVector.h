@@ -7,6 +7,7 @@
 #include <optional>
 #include <iostream>
 #include <iomanip>
+#include <ctime>
 
 using namespace std;
 
@@ -77,7 +78,18 @@ public:
     }
 
     void randomizeLpiloco() {
-
+        int index;
+        T temp;
+        for (int i = 0; i < size(vec); ++i) {
+            index = (time(0) * i) % size(vec);
+            temp = vec[i];
+            vec[i] = vec[index];
+            vec[index] = temp;
+//            for (int j = 0; j < size(vec); ++j) {
+//                cout << vec[j] << " ";
+//            }
+//            cout << endl;
+        }
     }
 
     void sortVector() {

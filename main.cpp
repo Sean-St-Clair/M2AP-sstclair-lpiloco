@@ -25,18 +25,18 @@ void testConsecutiveIdenticalItems(ShuffleVector<T> &vec);
 
 int main() {
     // Create shuffle vectors
-    vector<char> v1 = {'b', 'y', 'e', 'c', 'a'};
-    ShuffleVector<char> svec(v1);
+    vector<int> v1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+    ShuffleVector<int> svec(v1);
     svec.sortVector();
-    cout << svec << endl;
 
     // Test randomness for first algorithm
     svec.randomizeSstclair();
     testRelativeFrequencyPerIndex(svec);
-    testConsecutiveIdenticalItems(svec);
+    //testConsecutiveIdenticalItems(svec);
 
     // Test randomness for second algorithm
     svec.randomizeLpiloco();
+    cout << svec << endl;
     testRelativeFrequencyPerIndex(svec);
     testConsecutiveIdenticalItems(svec);
     return 0;
@@ -49,5 +49,20 @@ void testRelativeFrequencyPerIndex(ShuffleVector<T> &vec) {
 
 template<typename T>
 void testConsecutiveIdenticalItems(ShuffleVector<T> &vec) {
+    vector<T> originalVector = vec.getVector();
+    vector<T> consecutiveItems = {};
+    vec.randomizeLpiloco();
+    vector<T> newVector = vec.getVector();
 
+    int counter = 0;
+    for (int i = 0; i < size(originalVector) - 1; ++i) {
+        for (int j = 0; j < size(originalVector) - 1; ++j) {
+            if (newVector[i] == originalVector[j] && newVector[i + 1] == originalVector[j + 1]) {
+                consecutiveItems.push_back(newVector[i]);
+                consecutiveItems.push_back(newVector[i + 1]);
+                ++counter;
+            }
+        }
+    }
+    cout << "Consecutive values: " << counter << endl;
 }
