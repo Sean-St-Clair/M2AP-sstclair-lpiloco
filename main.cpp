@@ -2,7 +2,15 @@
 
 using namespace std;
 
-// TODO: Add good comments
+/*
+ * This struct is useful for keeping track of the occurrence of specific unique values
+ * during relative frequency testing.
+ */
+template<typename T>
+struct valueFrequencyPair {
+    T value;
+    int count;
+};
 
 /*
  * For each index in the given ShuffleVector, prints any time there is any discrepancy
@@ -33,17 +41,9 @@ int main() {
     svec.sortVector();
     cout << svec << endl << endl;
 
-    // Shuffles according to first algorithm (static seed)
-    svec.randomizeSstclair(0);
-    cout << "Shuffle Vector after randomizeSstclair with static seed: " << endl;
-    cout << svec << endl << endl;
-    cout << "Shuffle Vector after sorting: " << endl;
-    svec.sortVector();
-    cout << svec << endl << endl;
-
-    // Shuffles according to first algorithm (dynamic seed)
-    svec.randomizeSstclair(time(0));
-    cout << "Shuffle Vector after randomizeSstclair with dynamic seed: " << endl;
+    // Shuffles according to first algorithm
+    svec.randomizeSstclair();
+    cout << "Shuffle Vector after randomizeSstclair: " << endl;
     cout << svec << endl << endl;
     cout << "Shuffle Vector after sorting: " << endl;
     svec.sortVector();
@@ -67,16 +67,51 @@ int main() {
 
 // TODO: All of the methods have been demonstrated, so now each of these
 //  methods needs to test the randomness of both randomization algorithms
+
 template<typename T>
 void testRelativeFrequencyPerIndex(ShuffleVector<T> &vec) {
-    vector<T> originalVector = vec.getVector();
-    vector<T> newVector;
+    vector<T> testVector = vec.getVector();
 
-    // Testing with static seed
-    vec.randomizeSstclair(0);
+    // Finds all unique values present in vec
+    ShuffleVector<T> uniqueValues;
+    for (int i = 0; i < testVector.size(); ++i) {
+        if (uniqueValues.findItem(testVector[i]) == nullopt) {
+            uniqueValues.addItem(testVector[i]);
+        }
+    }
 
-    // Testing with dynamic seed
-    vec.randomizeSstclair(time(0));
+    // Creates an array of a size equal to the given vector, where vectors of valueFrequencyPairs are stored
+    vector<valueFrequencyPair<T>> counts[testVector.size()];
+    // Populates this array with all unique value pairings
+    for (int i = 0; i < uniqueValues.getVector().size(); ++i) {
+
+    }
+
+    cout << counts->size() << endl;
+    cout << testVector.size() << endl;
+
+    // Shuffle the vector 1,000 times, and keeps track of how many times a given value ended up in a given index
+    bool found;
+    for (int i = 0; i < testVector.size(); ++i) {
+        found = false;
+        for (int j = 0; j < counts[i].size(); ++j) {
+            if (counts[i][j].value == testVector[i]) {
+                found = true;
+                ++counts[i][j].count;
+                cout << "HELLO!?" << endl;
+            }
+            if (!found) {
+                counts[i].push_back({testVector[i], 1});
+            }
+        }
+    }
+
+    for (int i = 0; i < counts->size(); ++i)
+        for (int e = 0; e < counts[i].size(); ++e) {
+            cout << "val: " << counts[i][e].value << " occur: " << counts[i][e].count;
+        }
+
+    cout << "BYEEEEEEEE" << endl << endl;
 }
 
 // TODO: All of the methods have been demonstrated, so now each of these
@@ -90,7 +125,7 @@ void testConsecutiveIdenticalItems(ShuffleVector<T> &vec) {
 
     vec.sortVector();
     vector<T> consecutiveItemsS = {};
-    vec.randomizeSstclair(2);
+    vec.randomizeSstclair();
     vector<T> newVectorS = vec.getVector();
 
     int counterL = 0;
@@ -119,8 +154,7 @@ void testConsecutiveIdenticalItems(ShuffleVector<T> &vec) {
 
         if (consecutiveItemsL[i] == consecutiveItemsL[i + 1]) {
             ++tempCount;
-        }
-        else {
+        } else {
             tempCount = 2;
         }
     }
@@ -137,8 +171,7 @@ void testConsecutiveIdenticalItems(ShuffleVector<T> &vec) {
 
         if (consecutiveItemsL[i] == consecutiveItemsL[i + 1]) {
             ++tempCount;
-        }
-        else {
+        } else {
             tempCount = 2;
         }
     }

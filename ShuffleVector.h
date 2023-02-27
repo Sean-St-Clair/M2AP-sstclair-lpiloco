@@ -9,6 +9,9 @@
 #include <iomanip>
 #include <ctime>
 
+#include <algorithm>
+#include <random>
+
 using namespace std;
 
 template<typename T>
@@ -73,8 +76,9 @@ public:
         this->vec = vec;
     }
 
-    void randomizeSstclair(int seed) {
-
+    void randomizeSstclair() {
+        auto rng = std::default_random_engine{};
+        std::shuffle(std::begin(vec), std::end(vec), rng);
     }
 
     void randomizeLpiloco() {
@@ -96,11 +100,14 @@ public:
         vec = sortVecRec(vec);
     }
 
-    optional<T> findItem(T item) {
-        return nullopt;
+    void addItem(T item) {
+        vec.push_back(item);
     }
 
-    optional<T> findItemByIndex(int index) {
+    optional<T> findItem(T item) {
+        for (int i = 0; i < vec.size(); ++i)
+            if (item == vec[i])
+                return vec[i];
         return nullopt;
     }
 
