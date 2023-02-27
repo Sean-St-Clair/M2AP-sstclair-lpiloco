@@ -79,7 +79,25 @@ public:
 
     void randomizeSstclair() {
         srand(system_clock::now().time_since_epoch().count());
-        cout << rand() << endl;
+
+        // Shuffles the vector like a deck of cards, moving randomized "chunks"
+        // of values to the beginning or end of the "deck"
+        int startOfBlock, endOfBlock, blockSize, steps;
+        T temp;
+        for (int i = 0; i < vec.size() * 100; ++i) {
+            startOfBlock = rand() % vec.size();
+            blockSize = rand() % vec.size() / 10;
+            endOfBlock = startOfBlock + blockSize;
+            steps = 0;
+            if (endOfBlock >= vec.size() - 1)
+                endOfBlock = vec.size() - 1;
+            for (int e = startOfBlock; e < endOfBlock; ++e) {
+                temp = vec[e];
+                vec[e] = vec[vec.size() - 1 - steps];
+                vec[vec.size() - 1 - steps] = temp;
+                ++steps;
+            }
+        }
     }
 
     void randomizeLpiloco() {
