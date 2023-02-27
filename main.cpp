@@ -128,6 +128,21 @@ void testConsecutiveIdenticalItems(ShuffleVector<T> &vec) {
     cout << "Consecutive pairs in randomizeLpiloco: " << counterL << endl;
     cout << "Length of longest consecutive items: " << currentMax << endl << endl;
 
+    currentMax = 0;
+    tempCount = 2;
+    for (int i = 1; i < size(consecutiveItemsS); ++i) {
+        if (tempCount > currentMax && tempCount > 2) {
+            currentMax = tempCount;
+        }
+
+        if (consecutiveItemsL[i] == consecutiveItemsL[i + 1]) {
+            ++tempCount;
+        }
+        else {
+            tempCount = 2;
+        }
+    }
+
     cout << "Consecutive pairs in randomizeSstclair: " << counterS << endl;
-    cout << "Length of longest consecutive items: " << endl;
+    cout << "Length of longest consecutive items: " << currentMax << endl;
 }
