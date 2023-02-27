@@ -70,48 +70,54 @@ int main() {
 
 template<typename T>
 void testRelativeFrequencyPerIndex(ShuffleVector<T> &vec) {
-    vector<T> testVector = vec.getVector();
-
     // Finds all unique values present in vec
     ShuffleVector<T> uniqueValues;
-    for (int i = 0; i < testVector.size(); ++i) {
-        if (uniqueValues.findItem(testVector[i]) == nullopt) {
-            uniqueValues.addItem(testVector[i]);
+    for (int i = 0; i < vec.getVector().size(); ++i) {
+        if (uniqueValues.findItem(vec.getVector()[i]) == nullopt) {
+            uniqueValues.addItem(vec.getVector()[i]);
         }
     }
 
     // Creates an array of a size equal to the given vector, where vectors of valueFrequencyPairs are stored
-    vector<valueFrequencyPair<T>> counts[testVector.size()];
-    // Populates this array with all unique value pairings
+    vector<vector<valueFrequencyPair<T>>> counts;
+    vector<valueFrequencyPair<T>> perIndex;
     for (int i = 0; i < uniqueValues.getVector().size(); ++i) {
-
+        perIndex.push_back({uniqueValues.getVector()[i], 0});
+    }
+    // Populates counts with repetitions of perIndex
+    for (int i = 0; i < vec.getVector().size(); ++i) {
+        counts.push_back(perIndex);
     }
 
-    cout << counts->size() << endl;
-    cout << testVector.size() << endl;
-
-    // Shuffle the vector 1,000 times, and keeps track of how many times a given value ended up in a given index
-    bool found;
-    for (int i = 0; i < testVector.size(); ++i) {
-        found = false;
-        for (int j = 0; j < counts[i].size(); ++j) {
-            if (counts[i][j].value == testVector[i]) {
-                found = true;
-                ++counts[i][j].count;
-                cout << "HELLO!?" << endl;
-            }
-            if (!found) {
-                counts[i].push_back({testVector[i], 1});
+    // Shuffles the vector 1,000 times using randomizeSstclair, keeping track of how many times a given value ends up in a given index
+    vector<T> testVec;
+    for (int i = 0; i < 1000; ++i) {
+        vec.randomizeSstclair();
+        testVec = vec.getVector();
+        // For each index in the shuffled vector, increment the count of the appropriate value
+        for (int j = 0; j < testVec.size(); ++j) {
+            // Find which value in counts to increment
+            for (int e = 0; e < counts[j].size(); ++e) {
+                if (counts[j][e].value == testVec[j]) {
+                    ++counts[j][e].count;
+                    break;
+                }
             }
         }
     }
 
-    for (int i = 0; i < counts->size(); ++i)
+    // Printing frequency of all values at every index
+    for (int i = 0; i < counts.size(); ++i) {
+        cout << "At index " << i << ": " << endl;
         for (int e = 0; e < counts[i].size(); ++e) {
-            cout << "val: " << counts[i][e].value << " occur: " << counts[i][e].count;
+            cout << "Value: " << counts[i][e].value << endl << " Count: " << counts[i][e].count << endl;
         }
+        cout << endl;
+    }
 
-    cout << "BYEEEEEEEE" << endl << endl;
+//    auto rd = std::random_device{};
+//    auto rng = std::default_random_engine{rd()};
+//    std::shuffle(std::begin(vec), std::end(vec), rng);
 }
 
 // TODO: All of the methods have been demonstrated, so now each of these

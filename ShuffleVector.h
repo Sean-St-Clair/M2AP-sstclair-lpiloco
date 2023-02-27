@@ -77,8 +77,7 @@ public:
     }
 
     void randomizeSstclair() {
-        auto rng = std::default_random_engine{};
-        std::shuffle(std::begin(vec), std::end(vec), rng);
+
     }
 
     void randomizeLpiloco() {
