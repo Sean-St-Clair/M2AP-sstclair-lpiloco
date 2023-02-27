@@ -90,18 +90,18 @@ public:
             vec[index1] = vec[index2];
             vec[index2] = temp;
         }
-        for (int i = 0; i < size(vec); ++i) {
+        /*for (int i = 0; i < size(vec); ++i) {
             cout << vec[i] << endl;
-        }
+        }*/
     }
 
     void randomizeLpiloco() {
         int index;
         T temp;
-        for (int i = 0; i < size(vec); ++i) {
+        for (int i = 0; i < size(vec) + size(vec); ++i) {
             index = (time(0) * i) % size(vec);
-            temp = vec[i];
-            vec[i] = vec[index];
+            temp = vec[i % size(vec)];
+            vec[i % size(vec)] = vec[index];
             vec[index] = temp;
 //            for (int j = 0; j < size(vec); ++j) {
 //                cout << vec[j] << " ";
