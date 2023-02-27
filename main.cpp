@@ -1,5 +1,3 @@
-#include <iostream>
-#include <vector>
 #include "ShuffleVector.h"
 
 using namespace std;
@@ -8,7 +6,7 @@ using namespace std;
 
 /*
  * For each index in the given ShuffleVector, prints any time there is any discrepancy
- * between the expected relative frequency distribution of unique items and the actual
+ * between the expected relative frequency distribution of items and the actual
  * relative frequency distribution.
 */
 template<typename T>
@@ -27,26 +25,59 @@ int main() {
     // Create shuffle vectors
     vector<int> v1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
     ShuffleVector<int> svec(v1);
-    svec.sortVector();
 
-    // Test randomness for first algorithm
-    svec.randomizeSstclair();
-    testRelativeFrequencyPerIndex(svec);
-    //testConsecutiveIdenticalItems(svec);
-
-    // Test randomness for second algorithm
-    svec.randomizeLpiloco();
+    // Demonstrate sorting (before shuffling)
+    cout << "Shuffle Vector before sorting: " << endl;
     cout << svec << endl;
+    cout << "Shuffle Vector after sorting: " << endl;
+    svec.sortVector();
+    cout << svec << endl;
+
+    // Shuffles according to first algorithm (static seed)
+    svec.randomizeSstclair(0);
+    cout << "Shuffle Vector after randomizeSstclair with static seed: " << endl;
+    cout << svec << endl;
+    cout << "Shuffle Vector after sorting: " << endl;
+    svec.sortVector();
+    cout << svec << endl;
+
+    // Shuffles according to first algorithm (dynamic seed)
+    svec.randomizeSstclair(time(0));
+    cout << "Shuffle Vector after randomizeSstclair with dynamic seed: " << endl;
+    cout << svec << endl;
+    cout << "Shuffle Vector after sorting: " << endl;
+    svec.sortVector();
+    cout << svec << endl;
+
+    // Shuffles according to second algorithm
+    svec.randomizeLpiloco();
+    cout << "Shuffle Vector after randomizeLpiloco: " << endl;
+    cout << svec << endl;
+    cout << "Shuffle Vector after sorting: " << endl;
+    svec.sortVector();
+    cout << svec << endl;
+
     testRelativeFrequencyPerIndex(svec);
     testConsecutiveIdenticalItems(svec);
     return 0;
 }
 
+// TODO: All of the methods have been demonstrated, so now each of these
+//  methods needs to test the randomness of both randomization algorithms
 template<typename T>
 void testRelativeFrequencyPerIndex(ShuffleVector<T> &vec) {
+    vector<T> originalVector = vec.getVector();
+    vector<T> newVector;
 
+    // Testing with static seed
+    vec.randomizeSstclair(0);
+
+    // Testing with dynamic seed
+    vec.randomizeSstclair(time(0));
 }
 
+// TODO: All of the methods have been demonstrated, so now each of these
+//  methods needs to test the randomness of both randomization algorithms
 template<typename T>
 void testConsecutiveIdenticalItems(ShuffleVector<T> &vec) {
     vector<T> originalVector = vec.getVector();

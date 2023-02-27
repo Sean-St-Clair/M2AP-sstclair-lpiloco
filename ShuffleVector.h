@@ -64,7 +64,7 @@ public:
     }
 
     // Getters
-    vector<T> getVector() const{
+    vector<T> getVector() const {
         return vec;
     }
 
@@ -73,8 +73,8 @@ public:
         this->vec = vec;
     }
 
-    void randomizeSstclair() {
-        
+    void randomizeSstclair(int seed) {
+
     }
 
     void randomizeLpiloco() {
