@@ -77,22 +77,23 @@ public:
     }
 
     void randomizeSstclair() {
-        /*auto rng = std::default_random_engine{};
-        std::shuffle(std::begin(vec), std::end(vec), rng);*/
+        auto rd = std::random_device{};
+        auto rng = std::default_random_engine{rd()};
+        std::shuffle(std::begin(vec), std::end(vec), rng);
 
-        int index1;
-        int index2;
-        T temp;
-        for (int i = 0; i < size(vec); ++i) {
-            index1 = (time(0) * i) % size(vec);
-            index2 = time(0) % size(vec);
-            temp = vec[index1];
-            vec[index1] = vec[index2];
-            vec[index2] = temp;
-        }
-        for (int i = 0; i < size(vec); ++i) {
-            cout << vec[i] << endl;
-        }
+//        int index1;
+//        int index2;
+//        T temp;
+//        for (int i = 0; i < size(vec); ++i) {
+//            index1 = (time(0) * i) % size(vec);
+//            index2 = time(0) % size(vec);
+//            temp = vec[index1];
+//            vec[index1] = vec[index2];
+//            vec[index2] = temp;
+//        }
+//        for (int i = 0; i < size(vec); ++i) {
+//            cout << vec[i] << endl;
+//        }
     }
 
     void randomizeLpiloco() {

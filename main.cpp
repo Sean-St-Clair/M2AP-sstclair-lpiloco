@@ -14,7 +14,7 @@ struct valueFrequencyPair {
 
 /*
  * For each index in the given ShuffleVector, prints any time there is any discrepancy
- * between the expected relative frequency distribution of items and the actual
+ * between the expected relative frequency distribution of items and the expected
  * relative frequency distribution.
 */
 template<typename T>
@@ -65,9 +65,6 @@ int main() {
     return 0;
 }
 
-// TODO: All of the methods have been demonstrated, so now each of these
-//  methods needs to test the randomness of both randomization algorithms
-
 template<typename T>
 void testRelativeFrequencyPerIndex(ShuffleVector<T> &vec) {
     // Finds all unique values present in vec
@@ -106,7 +103,7 @@ void testRelativeFrequencyPerIndex(ShuffleVector<T> &vec) {
         }
     }
 
-    // Printing frequency of all values at every index
+    // Printing frequency of all values at every index, with an expectation that relative frequencies should look very similar across indices
     for (int i = 0; i < counts.size(); ++i) {
         cout << "At index " << i << ": " << endl;
         for (int e = 0; e < counts[i].size(); ++e) {
@@ -120,8 +117,6 @@ void testRelativeFrequencyPerIndex(ShuffleVector<T> &vec) {
 //    std::shuffle(std::begin(vec), std::end(vec), rng);
 }
 
-// TODO: All of the methods have been demonstrated, so now each of these
-//  methods needs to test the randomness of both randomization algorithms
 template<typename T>
 void testConsecutiveIdenticalItems(ShuffleVector<T> &vec) {
     vector<T> originalVector = vec.getVector();
