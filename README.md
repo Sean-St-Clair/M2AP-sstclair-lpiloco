@@ -97,4 +97,15 @@ The other method for testing showed no flags that the randomization method didn'
 only be useful if we had repeat values.
 
 ## Report Lpiloco:
-- The randomize function was particularly difficult to create due to the only way that I knew how to get a different result for every use was time(0). In the end I could not get my function to work well enough to be the final product. Out of both functions, Sean's function consistently had fewer consistencies and fewer consecutive items.
+
+The randomize function was particularly difficult to create due to the only way that I knew how to get a different
+result for every use was time(0). In the end I could not get my function to work well enough to be the final product.
+Out of both functions, Sean's function consistently had fewer consistencies and fewer consecutive items and was
+therefore more random.
+
+My randomization function worked by looping through the vector and then using rand() % size(vector) to get a random
+index within the vector and switching the item at that vector with the item at the current index in the loop.
+
+second metric for testing randomness was testing the amount of consecutive pairs that made it through the randomizing.
+By looking at each pair in the shuffled vector and comparing them with each pair in the original vector, we could figure
+out if the function was shuffling the items in the vector sufficiently.
