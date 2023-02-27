@@ -8,11 +8,12 @@
 #include <iostream>
 #include <iomanip>
 #include <ctime>
-
-#include <algorithm>
+#include <sys/time.h>
+#include <chrono>
 #include <random>
 
 using namespace std;
+using namespace std::chrono;
 
 template<typename T>
 class ShuffleVector {
@@ -77,23 +78,8 @@ public:
     }
 
     void randomizeSstclair() {
-        auto rd = std::random_device{};
-        auto rng = std::default_random_engine{rd()};
-        std::shuffle(std::begin(vec), std::end(vec), rng);
-
-//        int index1;
-//        int index2;
-//        T temp;
-//        for (int i = 0; i < size(vec); ++i) {
-//            index1 = (time(0) * i) % size(vec);
-//            index2 = time(0) % size(vec);
-//            temp = vec[index1];
-//            vec[index1] = vec[index2];
-//            vec[index2] = temp;
-//        }
-//        for (int i = 0; i < size(vec); ++i) {
-//            cout << vec[i] << endl;
-//        }
+        srand(system_clock::now().time_since_epoch().count());
+        cout << rand() << endl;
     }
 
     void randomizeLpiloco() {
