@@ -112,6 +112,12 @@ void testRelativeFrequencyPerIndex(ShuffleVector<T> &vec) {
         cout << endl;
     }
 
+    // Resets counts
+    counts.clear();
+    for (int i = 0; i < vec.getVector().size(); ++i) {
+        counts.push_back(perIndex);
+    }
+
     // Shuffles the vector 1,000 times using randomizeLpiloco, keeping track of how many times a given value ends up in a given index
     for (int i = 0; i < 1000; ++i) {
         vec.randomizeLpiloco();
