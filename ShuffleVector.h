@@ -103,15 +103,18 @@ public:
     void randomizeLpiloco() {
         int index;
         T temp;
-        for (int i = 0; i < size(vec) + size(vec); ++i) {
+        /*for (int i = 0; i < size(vec) + size(vec); ++i) {
             index = (time(0) * i) % size(vec);
             temp = vec[i % size(vec)];
             vec[i % size(vec)] = vec[index];
             vec[index] = temp;
-//            for (int j = 0; j < size(vec); ++j) {
-//                cout << vec[j] << " ";
-//            }
-//            cout << endl;
+        }*/
+
+        for (int i = 0; i < size(vec); ++i) {
+            index = rand() % size(vec);
+            temp = vec[i % size(vec)];
+            vec[i % size(vec)] = vec[index];
+            vec[index] = temp;
         }
     }
 
