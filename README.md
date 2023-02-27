@@ -74,3 +74,5 @@ you may receive point deductions.
 Some ideas for random testing suites from [
 this](https://medium.com/unitychain/provable-randomness-how-to-test-rngs-55ac6726c5a3) source. The
 relative-frequency-per-index one though was our own, so... we're proud of it.
+
+Time code from: https://www.delftstack.com/howto/cpp/how-to-get-time-in-milliseconds-cpp/
