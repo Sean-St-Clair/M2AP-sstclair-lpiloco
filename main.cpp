@@ -174,7 +174,7 @@ void testConsecutiveIdenticalItems(ShuffleVector<T> &vec) {
             currentMax = tempCount;
         }
 
-        if (consecutiveItemsL[i] == consecutiveItemsL[i + 1]) {
+        if (consecutiveItemsL[i] == consecutiveItemsL[i + 1] && (i + 1) < size(consecutiveItemsL)) {
             ++tempCount;
         } else {
             tempCount = 2;
@@ -191,7 +191,7 @@ void testConsecutiveIdenticalItems(ShuffleVector<T> &vec) {
             currentMax = tempCount;
         }
 
-        if (consecutiveItemsS[i] == consecutiveItemsS[i + 1]) {
+        if (consecutiveItemsS[i] == consecutiveItemsS[i + 1] && (i + 1) < size(consecutiveItemsS)) {
             ++tempCount;
         } else {
             tempCount = 2;
