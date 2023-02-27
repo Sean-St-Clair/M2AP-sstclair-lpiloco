@@ -105,16 +105,37 @@ void testRelativeFrequencyPerIndex(ShuffleVector<T> &vec) {
 
     // Printing frequency of all values at every index, with an expectation that relative frequencies should look very similar across indices
     for (int i = 0; i < counts.size(); ++i) {
-        cout << "At index " << i << ": " << endl;
+        cout << "At index " << i << " for method 1: " << endl;
         for (int e = 0; e < counts[i].size(); ++e) {
             cout << "Value: " << counts[i][e].value << endl << " Count: " << counts[i][e].count << endl;
         }
         cout << endl;
     }
 
-//    auto rd = std::random_device{};
-//    auto rng = std::default_random_engine{rd()};
-//    std::shuffle(std::begin(vec), std::end(vec), rng);
+    // Shuffles the vector 1,000 times using randomizeLpiloco, keeping track of how many times a given value ends up in a given index
+    for (int i = 0; i < 1000; ++i) {
+        vec.randomizeLpiloco();
+        testVec = vec.getVector();
+        // For each index in the shuffled vector, increment the count of the appropriate value
+        for (int j = 0; j < testVec.size(); ++j) {
+            // Find which value in counts to increment
+            for (int e = 0; e < counts[j].size(); ++e) {
+                if (counts[j][e].value == testVec[j]) {
+                    ++counts[j][e].count;
+                    break;
+                }
+            }
+        }
+    }
+
+    // Printing frequency of all values at every index, with an expectation that relative frequencies should look very similar across indices
+    for (int i = 0; i < counts.size(); ++i) {
+        cout << "At index " << i << " for method 2: " << endl;
+        for (int e = 0; e < counts[i].size(); ++e) {
+            cout << "Value: " << counts[i][e].value << endl << " Count: " << counts[i][e].count << endl;
+        }
+        cout << endl;
+    }
 }
 
 template<typename T>
@@ -165,7 +186,7 @@ void testConsecutiveIdenticalItems(ShuffleVector<T> &vec) {
 
     currentMax = 0;
     tempCount = 2;
-    for (int i = 1; i < size(consecutiveItemsS) -1; ++i) {
+    for (int i = 1; i < size(consecutiveItemsS) - 1; ++i) {
         if (tempCount > currentMax && tempCount > 2) {
             currentMax = tempCount;
         }
