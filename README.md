@@ -79,5 +79,19 @@ Time code from: https://www.delftstack.com/howto/cpp/how-to-get-time-in-millisec
 
 ## Report Sstclair:
 
+My randomization method operates like shuffling a deck of cards. It basically goes through the vector (a number of times
+equal to the size of the vector * 100, for thoroughness), and selects varying-sized "chunks" of items (like stacks of
+cards) to be moved, in order, to the very end of the list (swapped, in this case). The random sizes of the chunks,
+combined with the fact that chunks of items may be selected from indices which have already been swapped, seem to me
+like additional components that may increase the chance of my algorithm actually being truly random. We borrowed from
+built-in random-number generators, making sure to seed the shuffle function each time with a different value, which we
+have derived from the current time.
+
+The first of our test functions demonstrated the relative frequency of each unique value at each index, which was very
+useful when deciding whether or not our random function was functional. Before it was functional, values would look
+like "1,000, 0, 0, 0" for each index, showing that one item was the same for all indices (in other words, the vector
+wasn't being shuffled). After implementing our shuffle methods, the relative frequencies hovered around the value of 50,
+which was to be expected across 1,000 trials with a vector of size 20.
+
 ## Report Lpiloco:
 - The randomize function was particularly difficult to create due to the only way that I knew how to get a different result for every use was time(0). In the end I could not get my function to work well enough to be the final product. Out of both functions, Sean's function consistently had fewer consistencies and fewer consecutive items.
