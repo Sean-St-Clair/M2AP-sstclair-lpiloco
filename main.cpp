@@ -165,7 +165,7 @@ void testConsecutiveIdenticalItems(ShuffleVector<T> &vec) {
 
     currentMax = 0;
     tempCount = 2;
-    for (int i = 1; i < size(consecutiveItemsS) - 1; ++i) {
+    for (int i = 1; i < size(consecutiveItemsS) -1; ++i) {
         if (tempCount > currentMax && tempCount > 2) {
             currentMax = tempCount;
         }
