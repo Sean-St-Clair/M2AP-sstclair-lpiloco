@@ -80,3 +80,4 @@ Time code from: https://www.delftstack.com/howto/cpp/how-to-get-time-in-millisec
 ## Report Sstclair:
 
 ## Report Lpiloco:
+- The randomize function was particularly difficult to create due to the only way that I knew how to get a different result for every use was time(0). In the end I could not get my function to work well enough to be the final product. Out of both functions, Sean's function consistently had fewer consistencies and fewer consecutive items.
