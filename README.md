@@ -93,5 +93,8 @@ like "1,000, 0, 0, 0" for each index, showing that one item was the same for all
 wasn't being shuffled). After implementing our shuffle methods, the relative frequencies hovered around the value of 50,
 which was to be expected across 1,000 trials with a vector of size 20.
 
+The other method for testing showed no flags that the randomization method didn't work, however, these results would
+only be useful if we had repeat values.
+
 ## Report Lpiloco:
 - The randomize function was particularly difficult to create due to the only way that I knew how to get a different result for every use was time(0). In the end I could not get my function to work well enough to be the final product. Out of both functions, Sean's function consistently had fewer consistencies and fewer consecutive items.
